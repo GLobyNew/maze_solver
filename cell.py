@@ -57,3 +57,5 @@ class Cell:
         line_CtoC = Line(Point(xCenter_1, yCenter_1),
                          Point(xCenter_2, yCenter_2))
         self._win.draw_line(line_CtoC, fill_color)
+
+    
