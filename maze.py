@@ -47,6 +47,7 @@ class Maze:
 
         self._break_entrance_and_exit()
         self._break_walls_r(0, 0)
+        self._reset_cells_visited()
 
     def _break_entrance_and_exit(self):
         self._cells[0][0].has_left_wall = False
@@ -91,6 +92,12 @@ class Maze:
                     case _:
                         raise Exception("No direction given")
                 self._break_walls_r(direction_x, direction_y)
+
+    def _reset_cells_visited(self):
+        for ls in self._cells:
+            for cell in ls:
+                cell.visited = False
+
 
     def _calculate_cell_and_draw(self, i, j):
         self._cells[i][j]._x1 += self.x1
