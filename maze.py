@@ -10,7 +10,7 @@ class Maze:
         num_cols,
         cell_size_x,
         cell_size_y,
-        win,
+        win = None,
     ):
         self.x1 = x1
         self.y1 = y1
@@ -35,25 +35,32 @@ class Maze:
                 x_cur_pos += self.cell_size_x
             y_cur_pos += self.cell_size_y
         
+        self._break_entrance_and_exit()
+        
         # Start to draw
         for i in range(len(self._cells)):
             for j in range(len(self._cells[i])):
                 self._draw_cell(i,j)
 
+        
+
 
     def _draw_cell(self, i, j):
-        
-        initial_cell = self._cells[i][j]
         self._cells[i][j]._x1 += self.x1
         self._cells[i][j]._y1 += self.y1
         self._cells[i][j]._x2 += self.x1
         self._cells[i][j]._y2 += self.x1
-        # shifted_cell = Cell(initial_cell._x1 + self.x1, initial_cell._y1 + self.y1,
-        #                    initial_cell._x2 + self.x1, initial_cell._y2 + self.y1, self._win)
-        print(f"Printing cell on {self._cells[i][j]._x1} and {self._cells[i][j]._y1}")
-        self._cells[i][j].draw()
-        self._animate()
+        if self._win is not None:
+            self._cells[i][j].draw()
+            self._animate()
+
+    def _break_entrance_and_exit(self):
+        if len(self._cells):
+            self._cells[0][0].has_left_wall = False
+            self._cells[-1][-1].has_right_wall = False
+
+
 
     def _animate(self):
         self._win.redraw()
-        sleep(0.05)
+        sleep(0.01)
