@@ -18,18 +18,34 @@ class Cell:
             left_wall = Line(Point(self._x1, self._y1),
                              Point(self._x1, self._y2))
             self._win.draw_line(left_wall, fill_color)
+        else:
+            left_wall = Line(Point(self._x1, self._y1),
+                             Point(self._x1, self._y2))
+            self._win.draw_line(left_wall, "#323232")
         if self.has_right_wall:
             right_wall = Line(Point(self._x2, self._y1),
                               Point(self._x2, self._y2))
             self._win.draw_line(right_wall, fill_color)
+        else:
+            right_wall = Line(Point(self._x2, self._y1),
+                              Point(self._x2, self._y2))
+            self._win.draw_line(right_wall, "#323232")
         if self.has_top_wall:
             top_wall = Line(Point(self._x1, self._y1),
                             Point(self._x2, self._y1))
             self._win.draw_line(top_wall, fill_color)
+        else:
+            top_wall = Line(Point(self._x1, self._y1),
+                            Point(self._x2, self._y1))
+            self._win.draw_line(top_wall, "#323232")
         if self.has_bottom_wall:
             bottom_wall = Line(Point(self._x1, self._y2),
                                Point(self._x2, self._y2))
             self._win.draw_line(bottom_wall, fill_color)
+        else:
+            bottom_wall = Line(Point(self._x1, self._y2),
+                               Point(self._x2, self._y2))
+            self._win.draw_line(bottom_wall, "#323232")
 
     def draw_move(self, to_cell, undo=False):
         fill_color = "Red" if undo == False else "Gray"
