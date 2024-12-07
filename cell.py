@@ -12,6 +12,7 @@ class Cell:
         self._x2 = x2
         self._y2 = y2
         self._win = window
+        self.visited = False
 
     def draw(self, fill_color="Red"):
         if self.has_left_wall:
