@@ -47,7 +47,12 @@ class Maze:
 
         self._break_entrance_and_exit()
         self._break_walls_r(0, 0)
-        self._reset_cells_visited()
+        print(self._cells[0][0].has_left_wall)
+        print(self._cells[0][0].has_right_wall)
+        print(self._cells[0][0].has_top_wall)
+        print(self._cells[0][0].has_bottom_wall)
+        
+        #self._reset_cells_visited()
 
     def _break_entrance_and_exit(self):
         self._cells[0][0].has_left_wall = False
@@ -84,7 +89,7 @@ class Maze:
                         self._cells[i][j].has_right_wall = False
                         self._cells[direction_x][direction_y].has_left_wall = False
                     case "down":
-                        self._cells[i][j].has_down_wall = False
+                        self._cells[i][j].has_bottom_wall = False
                         self._cells[direction_x][direction_y].has_top_wall = False
                     case "left":
                         self._cells[i][j].has_left_wall = False
@@ -113,4 +118,4 @@ class Maze:
 
     def _animate(self):
         self._win.redraw()
-        #sleep(0.005)
+        
